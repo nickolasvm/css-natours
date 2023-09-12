@@ -156,6 +156,18 @@ to make animations
     }
 }
 
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* 
 link is pseudo class
 used to style elemenets under specials conditions
@@ -164,6 +176,7 @@ inline-block element is treated as text
 */
 .btn:link,
 .btn:visited {
+    position: relative;
     text-transform: uppercase;
     text-decoration: none;
     padding: 15px 40px;
@@ -189,4 +202,47 @@ inline-block element is treated as text
 .btn-white {
     background-color: #fff;
     color: #777;
+}
+
+/* 
+::after pseudo element adds a virtual element right after the element
+this pseudo elelment is basically tretaed like a child to the actual element
+using position absolute here, it will serahc for the next parent with relative positiooning
+so, we add this to its close parent, or else it will be far away than intended
+
+z-index changes the positions of elements if they are on top of one another
+*/
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+/* 
+scale changes the size of the element
+*/
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+/* 
+animation-fill-mode basically make that the styles of the start of the animation already is applied even if there is a delay
+
+without it, the button show up normally, THEN animate, making it look weird
+*/
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
 }
