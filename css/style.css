@@ -1,0 +1,49 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    /* changes the box model so the margin or padding dont change the total width or height */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    list-style: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    /* 2 bg's, one on top of other, and graident with 2 colors and position */
+    background-image: 
+        linear-gradient(
+            to right bottom,
+            rgba(126, 213, 111, 0.8),
+            rgba(40, 180, 133, 0.8)
+        ), 
+        url(../img/hero.jpg);
+    /* cover always try to fit inside the box */
+    background-size: cover;
+    /* size makes that whenever the image needs to be cropped, the top part always stays on, and can be bottom and center also */
+    background-position: top;
+
+    /* faz um clip de visibilidade baseado na função poligono que recebe como parametros coordenadas
+    polygon also can be a lot of forms
+    bennetfeely.com/clippy/
+    . polygon(quadrante top left, top right, bottom right, bottom left)
+    . polygon(xy, xy ,xy ,xy)
+    */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
