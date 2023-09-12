@@ -75,6 +75,14 @@ top and left are relatives to parent element, while translate is relative to the
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+
+    /* 
+    backface is like, imagine we roate the child element 180
+    using transform
+    we would see the background div parent element
+    we dont want that
+    */
+    backface-visibility: hidden;
 }
 
 /* whe display both as block, because block occupy the entire width avalible to them, forcing them to another line */
@@ -83,6 +91,18 @@ top and left are relatives to parent element, while translate is relative to the
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    /* to add the animation we just created */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+
+    /* 
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+    animation-timing-function: ease-in;
+    */
 }
 
 .heading-primary-sub {
@@ -90,4 +110,46 @@ top and left are relatives to parent element, while translate is relative to the
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out;
+}
+
+/* 
+to make animations
+@keyframes name-of-animation {
+    0% (or start)
+    n% (middle)
+    100% (or finish)
+*/
+@keyframes moveInLeft {
+    0% {
+        /* to make it invisible */
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        /* trasnlate 0 para manter a forma original */
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
