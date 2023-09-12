@@ -75,13 +75,13 @@ body {
 }
 
 /* to position absolute to work, it's starting point its the parente elemente with position relative */
-.logo-box {
+.header__logo-box {
     position: absolute;
     top: 4rem;
     left: 4rem;
 }
 
-.logo {
+.header__logo {
     height: 3.5rem;
 }
 
@@ -90,7 +90,7 @@ using 50% of the left, trhow the START of the div to left, making it look off
 . to make it work, use trasnform trasnlate fucntion, with x y params
 top and left are relatives to parent element, while translate is relative to the element itself
 */
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -113,7 +113,7 @@ top and left are relatives to parent element, while translate is relative to the
 }
 
 /* whe display both as block, because block occupy the entire width avalible to them, forcing them to another line */
-.heading-primary-main {
+.heading-primary--main {
     display: block;
     font-size: 6rem;
     font-weight: 400;
@@ -132,7 +132,7 @@ top and left are relatives to parent element, while translate is relative to the
     */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
@@ -225,7 +225,7 @@ inline-block element is treated as text
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -251,7 +251,7 @@ z-index changes the positions of elements if they are on top of one another
     transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -268,7 +268,7 @@ animation-fill-mode basically make that the styles of the start of the animation
 
 without it, the button show up normally, THEN animate, making it look weird
 */
-.btn-animated {
+.btn--animated {
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards;
 }

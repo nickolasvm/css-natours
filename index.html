@@ -14,23 +14,35 @@
     <title>Natours | Exciting tours for adventurous people</title>
 </head>
 
+<!-- 
+    using the BEM system of naming classes
+    header is a block
+    and logo-box is an element that, by its own, do nothing
+    so it needs the header to exist
+
+    the h1  heading-primary is also a standalone block, since we can use its style
+    in another eleement in the HTML
+
+    heading-primary-main and sub are modifiers to heading-primary, sice they are modified versions of the heading-primery block
+ -->
+
 <body>
     <header class="header">
-        <div class="logo-box">
-            <img src="img/logo-white.png" alt="Logo" class="logo" />
+        <div class="header__logo-box">
+            <img src="img/logo-white.png" alt="Logo" class="header__logo" />
         </div>
 
-        <div class="text-box">
+        <div class="header__text-box">
             <h1 class="heading-primary">
-                <span class="heading-primary-main">
+                <span class="heading-primary--main">
                     Outdoors
                 </span>
-                <span class="heading-primary-sub">
+                <span class="heading-primary--sub">
                     is where life happens
                 </span>
             </h1>
 
-            <a href="#" class="btn btn-white btn-animated">
+            <a href="#" class="btn btn--white btn--animated">
                 Discover articles
             </a>
         </div>
