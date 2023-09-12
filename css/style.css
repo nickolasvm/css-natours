@@ -70,11 +70,13 @@ top and left are relatives to parent element, while translate is relative to the
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+    margin-bottom: 50px;
 
     /* 
     backface is like, imagine we roate the child element 180
@@ -152,4 +154,39 @@ to make animations
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+/* 
+link is pseudo class
+used to style elemenets under specials conditions
+
+inline-block element is treated as text
+*/
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    /* 
+    trasistion is like an easier compact way of animating stuff
+    selectng all to amke all the attributes related to the transitioning
+    */
+    transition: all .2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
 }
