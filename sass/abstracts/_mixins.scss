@@ -1,0 +1,8 @@
+// fix the issue with float getting 0 hight
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
