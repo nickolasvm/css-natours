@@ -5,29 +5,14 @@ $color-primary-dark: #28b485;
 $color-grey-dark: #777;
 $color-white: #fff;
 
-/* basic reset */
 *,
 *::after,
 *::before {
     margin: 0;
     padding: 0;
-    /* changes the box model so the margin or padding dont change the total width or height */
     box-sizing: inherit;
 }
 
-/* 
-setting the font size on the html (root)
-so we can use rem units to size our stuff
-setting it to 10px means that
-1rem = 10px
-
-the problem with setting the root font size is that
-a user that want tochange it has no way of doing it
-that's why isntead of setting a fized font size of 10px
-we use a percentage of the default browser font size (16px)
-to ake our root font size 10px
-thats why we use 62.5%
-*/
 html {
     font-size: 62.5%;
 }
@@ -35,14 +20,8 @@ html {
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    /* font-size: 16px; */
     list-style: 1.7;
     color: $color-grey-dark;
-    /* 
-    by setting up our root font size to 10px
-    to have the same effect here as 30px padding
-    we can change it to 3rem = 30px
-    */
     padding: 3rem;
     box-sizing: border-box;
 }
@@ -50,27 +29,17 @@ body {
 .header {
     position: relative;
     height: 95vh;
-    /* 2 bg's, one on top of other, and graident with 2 colors and position */
     background-image:
         linear-gradient(to right bottom,
             rgba($color-primary-light, 0.8),
             rgba($color-primary-dark, 0.8)),
         url(../img/hero.jpg);
-    /* cover always try to fit inside the box */
     background-size: cover;
-    /* size makes that whenever the image needs to be cropped, the top part always stays on, and can be bottom and center also */
     background-position: top;
 
-    /* faz um clip de visibilidade baseado na função poligono que recebe como parametros coordenadas
-    polygon also can be a lot of forms
-    bennetfeely.com/clippy/
-    . polygon(quadrante top left, top right, bottom right, bottom left)
-    . polygon(xy, xy ,xy ,xy)
-    */
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
 
-/* to position absolute to work, it's starting point its the parente elemente with position relative */
 .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -81,11 +50,6 @@ body {
     height: 3.5rem;
 }
 
-/* 
-using 50% of the left, trhow the START of the div to left, making it look off
-. to make it work, use trasnform trasnlate fucntion, with x y params
-top and left are relatives to parent element, while translate is relative to the element itself
-*/
 .header__text-box {
     position: absolute;
     top: 40%;
@@ -99,33 +63,18 @@ top and left are relatives to parent element, while translate is relative to the
     text-transform: uppercase;
     margin-bottom: 6rem;
 
-    /* 
-    backface is like, imagine we roate the child element 180
-    using transform
-    we would see the background div parent element
-    we dont want that
-    */
     backface-visibility: hidden;
 }
 
-/* whe display both as block, because block occupy the entire width avalible to them, forcing them to another line */
 .heading-primary--main {
     display: block;
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
 
-    /* to add the animation we just created */
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
-
-
-    /* 
-    animation-delay: 3s;
-    animation-iteration-count: 3;
-    animation-timing-function: ease-in;
-    */
 }
 
 .heading-primary--sub {
@@ -136,16 +85,8 @@ top and left are relatives to parent element, while translate is relative to the
     animation: moveInRight 1s ease-out;
 }
 
-/* 
-to make animations
-@keyframes name-of-animation {
-    0% (or start)
-    n% (middle)
-    100% (or finish)
-*/
 @keyframes moveInLeft {
     0% {
-        /* to make it invisible */
         opacity: 0;
         transform: translateX(-10rem);
     }
@@ -156,7 +97,6 @@ to make animations
 
     100% {
         opacity: 1;
-        /* trasnlate 0 para manter a forma original */
         transform: translateX(0);
     }
 }
@@ -189,12 +129,6 @@ to make animations
     }
 }
 
-/* 
-link is pseudo class
-used to style elemenets under specials conditions
-
-inline-block element is treated as text
-*/
 .btn:link,
 .btn:visited {
     font-size: 1.6rem;
@@ -204,10 +138,6 @@ inline-block element is treated as text
     padding: 1.5rem 4rem;
     display: inline-block;
     border-radius: 10rem;
-    /* 
-    trasistion is like an easier compact way of animating stuff
-    selectng all to amke all the attributes related to the transitioning
-    */
     transition: all .2s;
 }
 
@@ -226,14 +156,6 @@ inline-block element is treated as text
     color: $color-grey-dark;
 }
 
-/* 
-::after pseudo element adds a virtual element right after the element
-this pseudo elelment is basically tretaed like a child to the actual element
-using position absolute here, it will serahc for the next parent with relative positiooning
-so, we add this to its close parent, or else it will be far away than intended
-
-z-index changes the positions of elements if they are on top of one another
-*/
 .btn::after {
     content: "";
     display: inline-block;
@@ -251,19 +173,11 @@ z-index changes the positions of elements if they are on top of one another
     background-color: $color-white;
 }
 
-/* 
-scale changes the size of the element
-*/
 .btn:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
 }
 
-/* 
-animation-fill-mode basically make that the styles of the start of the animation already is applied even if there is a delay
-
-without it, the button show up normally, THEN animate, making it look weird
-*/
 .btn--animated {
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards;
