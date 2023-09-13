@@ -32,3 +32,26 @@ body {
         animation: moveInRight 1s ease-out;
     }
 }
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right,
+            $color-primary-light,
+            $color-primary-dark);
+
+    // with this, we can make the bg clip only where text is, and then we make the text trasnparent
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    letter-spacing: .2rem;
+    transition: all .2s;
+
+    &:hover {
+        transform: skewY(2deg) skewX(15deg);
+        text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    }
+}

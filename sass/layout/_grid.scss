@@ -1,47 +1,29 @@
 .row {
-    // use max-width is better practice than use width
     max-width: $grid-width;
-    background-color: #eee;
-    // margin 0 auto is the easiest way to center
-    //a block element inside another block element
     margin: 0 auto;
 
-    // since we gave itself a mrgin bottom and normally we dont want the bottom element to hav this margin, we remove it
-    // using the :not pseudoclass, we can select everything BUT whatever we use as parameter
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
     }
 
-    // use cleafix to fix the height problem of floating children
     @include clearfix;
 
-    // this syntax allows to select all elements that have the set atrribute
-    // the ^ tells it to select all that start with the specified string
-    // the * its to a string that conatins the atribute
-    // the $ its for a string that ends in the attribute
     [class^="col-"] {
-        background-color: orange;
         float: left;
 
-        // we do that so that we dont need a gutter div
-        // we simply give a margin right to all elements in the row
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
         }
     }
 
-    // using native calc(), we can perform calculation with different type of units (%, rem, px)
-    // here, we tell that the width of this class WHEN inside the class row, is 100% - the gutter that we predefined (6rem, inside of #{}) / number of columns
     .col-1-of-2 {
         width: calc((100% - #{$gutter-horizontal}) / 2);
     }
 
     .col-1-of-3 {
-        // * 2 because there is going to be 2 gutters to separte them
         width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
     }
 
-    // here my width is 2 times the width of 1-of-3 plus the gutter
     .col-2-of-3 {
         width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
     }
