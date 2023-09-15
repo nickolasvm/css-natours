@@ -41,4 +41,7 @@
 .book {
     background-image: url(../img/nat-10.jpg);
     background-size: cover;
+    border-radius: $default-border;
+
+    height: 50rem;
 }
