@@ -13,3 +13,62 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+// @content allow us to pass code into the mixin
+// @mixin respond-phone {
+//     @media (max-width: 600px) {
+//         @content;
+//     }
+// }
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:  Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+1200 - 1800px:  Nomral styles applies
+1800px +:   Big desktop
+*/
+
+/*
+    $breakpoint arguments choices:
+    - phone
+    - tab-port
+    - tab-land
+    - big-desktop
+*/
+
+// em and rems are not affected by the setted root font size, instead
+// they affected only by the browser default font-size (in this case, 16px)
+// because of this, ems are the best for media queries
+
+// 1em = 16px
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        // 600px
+        @media (max-width: 37.5em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == tab-port {
+        // 900px
+        @media (max-width: 56.25em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == tab-land {
+        // 1200px
+        @media (max-width: 75em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == big-desktop {
+        // 1800px
+        @media (min-width: 112.5em) {
+            @content;
+        }
+    }
+}
