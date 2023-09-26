@@ -11,10 +11,18 @@
     visibility: hidden;
     transition: all 0.3s;
 
+    // the course was made in 2017, by then, google chrome did not have support for backdrop-filter, it only worked on safari
+    // by 2023, it does work, but we are creating the @supports
+    // for teaching purposes only
+    @supports (-webkit-backdrop-filter: blur(1rem)) or (backdrop-filter: blur(1rem)) {
+        -webkit-backdrop-filter: blur(1rem);
+        backdrop-filter: blur(1rem);
+        background-color: rgba($color-black, 0.3);
+    }
+
     // we set the opacity and visibility to 0, and animate it back when the target is the popup
     // we do this inthe HTML setting as an anchor
     // to close it, we set the target to something else
-
     &__content {
         @include absCenter;
 
