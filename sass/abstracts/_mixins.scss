@@ -43,6 +43,9 @@
 // because of this, ems are the best for media queries
 
 // 1em = 16px
+
+// ORDER: Base + Typograph > general layout + grid > page layout > components
+
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
         // 600px
