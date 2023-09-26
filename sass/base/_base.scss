@@ -38,3 +38,9 @@ body {
         padding: 0;
     }
 }
+
+// chages on how the user select a text
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
