@@ -429,7 +429,18 @@
 
     <footer class="footer">
         <div class="footer__logo-box">
-            <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+            <!-- 
+                srcset we can choose the pixel density of the image
+                in this case, a 1x or 2x
+
+                we also use the picture with source tag, so we can add a media quey for the image
+                in this case, if the screen is phine size, we use the small logo
+             -->
+            <picture class="footer__logo">
+                <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x"
+                    media="(max-width: 37.5em)">
+                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+            </picture>
         </div>
 
         <div class="row">
